@@ -13,34 +13,38 @@ Letra *criaPalavra(){
   return Li;
 }
 
-int addLetra(Letra *Li, char c){
+int addLetra(Palavra *P, char c){
+
+  if(P==NULL) return 0;
 
   Letra *Ln = (Letra *) malloc(sizeof(Letra));
   if(Ln==NULL) return 0;
-
   Ln->c=c;
   Ln->prox=NULL;
 
-  if(Li==NULL){
-    Li=Ln;
+  if((*P)==NULL){
+    *P=Ln;
   } else {
     Letra *aux;
-    aux=Li;
+    aux=*P;
     while(aux->prox!=NULL){
       aux=aux->prox;
     }
-    aux->prox=Li;
+    aux->prox=Ln;
   }
+  
 
   return 1; // sucesso=1 p/ while(add..)
 }
 
-int printPalavra(Letra *Li){
+int printPalavra(Palavra *P){
 
-  if(Li==NULL) return 0;
+  if(P==NULL) return 0;
 
-  Letra *Ln=Li;
-  while(Ln!=NULL) printf("%c",Ln->c);
-
+  Letra *Ln=*P;
+  while(Ln!=NULL){
+    printf("%c",Ln->c);
+    Ln=Ln->prox;
+  } 
   return 1;
 }
