@@ -5,12 +5,10 @@ typedef struct letra {
   struct letra *prox;
 } Letra;
 
-typedef Letra *Palavra;
+Letra *criaPalavra();
+int addLetra(Letra *L, char c);
+char pickLetra(Letra *L, int pos);
+int printPalavra(Letra *L);
 
-Palavra *criaPalavra();
-int addLetra(Palavra *P, char c);
-char pickLetra(Palavra *P, int pos);
-int printPalavra(Palavra *P);
-
-int trCesar(Palavra *P);
-int trChave(Palavra *P);
+int trCesar(Letra *L);
+int trChave(Letra *L);

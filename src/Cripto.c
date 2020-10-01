@@ -1,31 +1,31 @@
 #include "Cripto.h"
+#include <stdio.h>
 #include <stdlib.h>
 
-Palavra *criaPalavra(){
+Letra *criaPalavra(){
   
-  Palavra *Pi;
+  Letra *Li;
 
-  Pi = (Palavra*) malloc(sizeof(Palavra));
-  if(Pi!=NULL)
-    Pi=NULL;
+  Li =(Letra*) malloc(sizeof(Letra));
+  if(Li!=NULL)
+    Li=NULL;
 
-  return Pi;
+  return Li;
 }
 
-int addLetra(Palavra *P, char c){
+int addLetra(Letra *Li, char c){
 
-  if(P==NULL) return 0; // erro
-  Letra *Li = (Letra *) malloc(sizeof(Letra));
-  if(Li==NULL) return 0;
+  Letra *Ln = (Letra *) malloc(sizeof(Letra));
+  if(Ln==NULL) return 0;
 
-  Li->c=c;
-  Li->prox=NULL;
+  Ln->c=c;
+  Ln->prox=NULL;
 
-  if(*P==NULL){
-    *P=Li;
+  if(Li==NULL){
+    Li=Ln;
   } else {
     Letra *aux;
-    aux=*P;
+    aux=Li;
     while(aux->prox!=NULL){
       aux=aux->prox;
     }
@@ -35,8 +35,12 @@ int addLetra(Palavra *P, char c){
   return 1; // sucesso=1 p/ while(add..)
 }
 
-int printPalavra(Palavra *P){
+int printPalavra(Letra *Li){
 
+  if(Li==NULL) return 0;
 
-  return 0;
+  Letra *Ln=Li;
+  while(Ln!=NULL) printf("%c",Ln->c);
+
+  return 1;
 }
