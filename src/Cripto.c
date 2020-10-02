@@ -39,7 +39,7 @@ int printPalavra(Palavra *P){
 
   Letra *Ln=*P;
   while(Ln!=NULL){
-    putchar(Ln->c);
+    printf("%c",Ln->c);
     Ln=Ln->prox;
   } 
   return 1;

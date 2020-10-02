@@ -15,7 +15,7 @@ cc_flags=-Wall \
 				 -pedantic
 
 
-all: clean objdir $(prog)
+all: objdir $(prog)
 
 objdir:
 	@ mkdir object
