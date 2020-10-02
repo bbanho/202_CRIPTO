@@ -62,17 +62,17 @@ int trCesar(Palavra *P, int n){
   return 1;
 }
 
-int trChave(Palavra *P, int v[5], int modo){
+int trChave(Palavra *P, int *v, int v_l, int modo){
 
-  if(P==NULL) return 0;
+  if(P==NULL || v==NULL) return 0;
 
   Letra *Li = (Letra *) malloc(sizeof(Letra));
   if(Li==NULL) return 0;
+  Li=*P;
 
   int i=0;
-  Li=*P;
   while(Li->prox!=NULL){
-    if(i>5) i=0;
+    if(i>=v_l) i=0;
     if(modo==1){
       Li->c+=v[i];
     } else {
@@ -86,29 +86,39 @@ int trChave(Palavra *P, int v[5], int modo){
 }
 
 
-int trChaveChar(Palavra *P, int v[5], int modo){
+int trChaveChar(Palavra *P, int *v, int v_l, int modo){
 
   if(P==NULL) return 0;
 
   Letra *Li = (Letra *) malloc(sizeof(Letra));
-  if(Li==NULL) return 0;
+  if(Li==NULL || v!=NULL) return 0;
 
-  int i=0;
+  int i=1;
   Li=*P;
   while(Li->prox!=NULL){
+//    if(i>v_l) i=1;
     if(modo==1){
-      if((i+1)%3==0) {
+      if((i)%3==0) {
         addLetra(&Li, '*');
         Li=Li->prox;
       }
-      Li->c+=v[i];
+      Li->c+=v[i-1];
     } else {
-      if((i+1)%3==0)
+      if((i)%3==0)
         Li=Li->prox;
-      Li->c-=v[i];
+      Li->c-=v[i-1];
     }
     Li=Li->prox;
     i++;
+  }
+
+  return 1;
+}
+
+int traduz(int *outp, char *inp){
+
+  for(int i=0;i<5;i++){
+    outp[i]=inp[i]-'0';
   }
 
   return 1;

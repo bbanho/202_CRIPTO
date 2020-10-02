@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "Cripto.h"
 
 int main(){
@@ -10,42 +7,108 @@ int main(){
 	// 2  c cesar+3
   // -2 d cesar+3
   //
-  Palavra *P = criaPalavra();
+  Palavra *P;
+  P = criaPalavra();
 
-  char *w = "abcdefghij\0";
-    
-  for(int i=0;i<(int)strlen(w);i++){
-    if(addLetra(P,w[i])==0) return 0;
+  int menu,chave3[3]={1,2,3},chaved[5];
+  char buf[1025],chavec[6];
+
+  menu = 9;
+
+  while(menu){
+    scanf("%d",&menu);
+    fflush(stdin);
+    strcpy(buf,"");
+    P=criaPalavra();
+    switch(menu){
+      // cesar
+      case 1:
+//        fgets(buf,1024,stdin);
+        scanf("%s",buf);
+        for(int i=0;i<(int)strlen(buf);i++){
+          if(addLetra(P,buf[i])==0) return 0;
+        }
+        trCesar(P,1);
+        printPalavra(P);
+      break;
+
+      case -1:
+        scanf("%s",buf);
+        for(int i=0;i<(int)strlen(buf);i++){
+          if(addLetra(P,buf[i])==0) return 0;
+        }
+        trCesar(P,-1);
+        printPalavra(P);
+      break;
+
+      // cesar 3
+      case 2:
+        scanf("%s",buf);
+        for(int i=0;i<(int)strlen(buf);i++){
+          if(addLetra(P,buf[i])==0) return 0;
+        }
+        trCesar(P,3);
+        printPalavra(P);
+      break;
+
+      case -2:
+        scanf("%s",buf);
+        for(int i=0;i<(int)strlen(buf);i++){
+          if(addLetra(P,buf[i])==0) return 0;
+        }
+        trCesar(P,-3);
+        printPalavra(P);
+      break;
+
+      // cesar 1,2,3 (chave 1,2,3)
+      case 3:
+        scanf("%s",buf);
+        for(int i=0;i<(int)strlen(buf);i++){
+          if(addLetra(P,buf[i])==0) return 0;
+        }
+        trChave(P,chave3,3,1);
+        printPalavra(P);
+      break;
+
+      case -3:
+        scanf("%s",buf);
+        for(int i=0;i<(int)strlen(buf);i++){
+          if(addLetra(P,buf[i])==0) return 0;
+        }
+        trChave(P,chave3,3,0);
+        printPalavra(P);
+      break;
+      
+      case 4:
+        scanf("%*[^\n]"); scanf("%*c");
+        scanf("%[^\n]",chavec);
+        if(traduz(chaved,chavec)==0) return 0;
+        scanf("%*[^\n]"); scanf("%*c");
+        scanf("%[^\n]",buf);
+        for(int i=0;i<=(int)strlen(buf);i++){
+          if(addLetra(P,buf[i])==0) return 0;
+        }
+        trChave(P,chaved,5,1);
+        printPalavra(P);       
+      break;
+
+      case -4:
+        scanf("%*[^\n]"); scanf("%*c");
+        scanf("%[^\n]",chavec);
+        if(traduz(chaved,chavec)==0) return 0;
+        scanf("%*[^\n]"); scanf("%*c");
+        scanf("%[^\n]",buf);
+        for(int i=0;i<=(int)strlen(buf);i++){
+          if(addLetra(P,buf[i])==0) return 0;
+        }
+        trChave(P,chaved,5,0);
+        printPalavra(P);       
+        
+
+      break;
+    }
+
   }
-
-  puts("Mensagem");
-  printPalavra(P);
-
-  puts("Encript cesar 1");
-  trCesar(P,1);
-  printPalavra(P);
-
-  puts("Decript cesar 1");
-  trCesar(P,-1);
-  printPalavra(P);
-
-  int chave[5] = {1,2,3,4,5};
-  puts("Encript chave");
-  trChave(P,chave,1);
-  printPalavra(P);
-
-  puts("decript Chave");
-  trChave(P,chave,0);
-  printPalavra(P);
-
-  puts("encript + char");
-  trChaveChar(P,chave,1);
-  printPalavra(P);
-
-  puts("decrypt + char");
-  trChaveChar(P,chave,0);
-  printPalavra(P);
-
   return 0;
 }
 
