@@ -42,7 +42,6 @@ int printPalavra(Palavra *P){
     putchar(Ln->c);
     Ln=Ln->prox;
   } 
-  puts("\n");
   return 1;
 }
 
