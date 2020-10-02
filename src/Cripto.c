@@ -86,7 +86,7 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
 }
 
 
-int trChaveChar(Palavra *P, int *v, int v_l, int modo){
+int trChaveChar(Palavra *P, int *v, int modo){
 
   if(P==NULL) return 0;
 
@@ -96,7 +96,6 @@ int trChaveChar(Palavra *P, int *v, int v_l, int modo){
   int i=1;
   Li=*P;
   while(Li->prox!=NULL){
-//    if(i>v_l) i=1;
     if(modo==1){
       if((i)%3==0) {
         addLetra(&Li, '*');
