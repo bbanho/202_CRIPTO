@@ -7,10 +7,15 @@ typedef struct letra {
 
 typedef Letra *Palavra;
 
-Letra *criaPalavra();
+Palavra *criaPalavra();
 int addLetra(Palavra *P, char c);
 char pickLetra(Palavra *P, int pos);
 int printPalavra(Palavra *P);
 
-int trCesar(Palavra *P);
-int trChave(Palavra *P);
+// modo 1 encrypt, 0 decrypt
+
+int trCesar(Palavra *P, int n);
+int trChave(Palavra *P, int v[5], int modo);
+
+int trChaveChar(Palavra *P, int v[5], int modo);
+
