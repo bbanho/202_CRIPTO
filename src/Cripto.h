@@ -10,6 +10,7 @@ typedef Letra *Palavra;
 
 Palavra *criaPalavra();
 int addLetra(Palavra *P, char c);
+int addLetraPos(Palavra *P, char c, int pos);
 char pickLetra(Palavra *P, int pos);
 int printPalavra(Palavra *P);
 
@@ -17,6 +18,6 @@ int printPalavra(Palavra *P);
 
 int trCesar(Palavra *P, int n);
 int trChave(Palavra *P, int *v, int v_l, int modo);
-int trChaveChar(Palavra *P, int *v, int modo);
+int trChaveChar(Palavra *P, int *v, int v_l, int modo);
 
 int traduz(int *u, char *inp);

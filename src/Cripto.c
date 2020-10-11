@@ -33,6 +33,32 @@ int addLetra(Palavra *P, char c){
   return 1; // sucesso=1 p/ while(add..)
 }
 
+int addLetraPos(Palavra *P, char c, int pos){
+
+  if(P==NULL) return 0;
+
+  Letra *Lo = (Letra *) malloc(sizeof(Letra));
+  if(Lo==NULL) return 0;
+  Lo->c=c;
+  Lo->prox=NULL;
+
+  if(*P==NULL){ // vazia
+    *P=Lo;
+  } else { // procura pos
+    Letra *Li=*P;
+    for(int i=0;i<pos;i++){
+      if(Li->prox==NULL) // se encontrar nulo 
+        return 0;        //antes de pos, retorna
+      Li=Li->prox;
+    }
+    // add *
+    Li->prox=Lo;
+    Li=Li->prox;
+  }
+  return 1; // sucesso=1 p/ while(add..)
+}
+
+
 int printPalavra(Palavra *P){
 
   if(P==NULL) return 0;
@@ -42,6 +68,7 @@ int printPalavra(Palavra *P){
     printf("%c",Ln->c);
     Ln=Ln->prox;
   } 
+  printf("\n");
   return 1;
 }
 
@@ -84,34 +111,35 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
   return 1;
 }
 
+int trChaveChar(Palavra *P, int *v, int v_l, int modo){
 
-int trChaveChar(Palavra *P, int *v, int modo){
-
-  if(P==NULL) return 0;
 
   Letra *Li = (Letra *) malloc(sizeof(Letra));
-  if(Li==NULL || v!=NULL) return 0;
+  if(Li==NULL) return 0;
 
-  int i=1;
+  Palavra *Lo;
+  Lo=criaPalavra();
+  if(Lo==NULL) return 0;
+  
+  int i=0,j=1;
   Li=*P;
   while(Li->prox!=NULL){
+    if(i>=v_l) i=0;
     if(modo==1){
-      if((i)%3==0) {
-        addLetra(&Li, '*');
-        Li=Li->prox;
-      }
-      Li->c+=v[i-1];
+      addLetra(Lo,Li->c+v[i]);
+      if(j%3==0)
+        addLetra(Lo,'*');
     } else {
-      if((i)%3==0)
-        Li=Li->prox;
-      Li->c-=v[i-1];
+      addLetra(Lo,Li->c+v[i]);
     }
     Li=Li->prox;
-    i++;
+    i++;j++;
   }
+  *P=*Lo;
 
-  return 1;
+ return 1;
 }
+
 
 int traduz(int *outp, char *inp){
 
