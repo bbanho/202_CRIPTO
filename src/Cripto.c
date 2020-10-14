@@ -120,7 +120,7 @@ int trChaveChar(Palavra *P, int *v, int v_l, int modo){
     if(i>=v_l) i=0;
     if(modo==1){
       addLetra(Lo,Li->c+v[i]);
-      if(j%3==0&&Li->prox!=NULL)
+      if(j%3==0&&Li->prox->prox!=NULL)
         addLetra(Lo,'*');
     } else {
       addLetra(Lo,Li->c-v[i]);
