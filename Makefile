@@ -12,6 +12,6 @@ clean:
 	rm ./$(prog)
 
 run:
-	./bin
+	@ ./bin
 
 
