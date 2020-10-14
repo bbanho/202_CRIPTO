@@ -33,28 +33,21 @@ int addLetra(Palavra *P, char c){
   return 1; // sucesso=1 p/ while(add..)
 }
 
-int addLetraPos(Palavra *P, char c, int pos){
+int rmLetra(Palavra *P, int pos){
 
   if(P==NULL) return 0;
 
-  Letra *Lo = (Letra *) malloc(sizeof(Letra));
-  if(Lo==NULL) return 0;
-  Lo->c=c;
-  Lo->prox=NULL;
+  Letra *Li,*La;
+  Li=*P;
 
-  if(*P==NULL){ // vazia
-    *P=Lo;
-  } else { // procura pos
-    Letra *Li=*P;
-    for(int i=0;i<pos;i++){
-      if(Li->prox==NULL) // se encontrar nulo 
-        return 0;        //antes de pos, retorna
-      Li=Li->prox;
-    }
-    // add *
-    Li->prox=Lo;
+  for(int i=1;i<=pos;i++){
+    if(Li->prox==NULL) return 0;
+    La=Li;
     Li=Li->prox;
   }
+  La->prox=Li->prox;
+  Li->prox=La;
+  
   return 1; // sucesso=1 p/ while(add..)
 }
 
@@ -127,10 +120,14 @@ int trChaveChar(Palavra *P, int *v, int v_l, int modo){
     if(i>=v_l) i=0;
     if(modo==1){
       addLetra(Lo,Li->c+v[i]);
-      if(j%3==0)
+      if(j%3==0&&Li->prox->prox!=NULL)
         addLetra(Lo,'*');
     } else {
-      addLetra(Lo,Li->c+v[i]);
+      if(j%3==0){
+        rmLetra(&Li,j);
+        Li=Li->prox;
+      }
+      addLetra(Lo,Li->c-v[i]);
     }
     Li=Li->prox;
     i++;j++;
