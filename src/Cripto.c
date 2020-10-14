@@ -61,7 +61,6 @@ int printPalavra(Palavra *P){
     printf("%c",Ln->c);
     Ln=Ln->prox;
   } 
-  printf("\n");
   return 1;
 }
 
