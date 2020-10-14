@@ -90,7 +90,7 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
   Li=*P;
 
   int i=0;
-  while(Li->prox!=NULL){
+  while(Li!=NULL){
     if(i>=v_l) i=0;
     if(modo==1){
       Li->c+=v[i];
