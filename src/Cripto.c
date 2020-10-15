@@ -87,22 +87,15 @@ int printPalavra(Palavra *P){
 
   if(P==NULL) return 1;
 
-//  char p[1024];
   int i=0;
 
   Letra *Ln=*P;
-  while(Ln!=NULL&&i<tamPalavra(P)-1){
+  while(Ln!=NULL&&i<tamPalavra(P)){
     if(i>1024) return 1;
-//    p[i]=Ln->c;
     printf("%c",Ln->c);
     Ln=Ln->prox;i++;
   }
-//  p[tamPalavra(P)]='\0';
-//  printf("%s\n",p);
-//  for(int i=0;i<tamPalavra(P);i++){
-//    printf("%x",p[i]);
-//  }
-  return 0;
+ return 0;
 }
 
 
@@ -126,8 +119,8 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
   Letra *Li;
   Li=*P;
 
-  int i=0;
-  while(Li->prox!=NULL){
+  int i=0,j=0;
+  while(Li->prox!=NULL&&j<tamPalavra(P)){
     if(i>=v_l) i=0;
     if(modo==1){
       Li->c+=v[i];
@@ -135,7 +128,7 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
       Li->c-=v[i];
     }
     Li=Li->prox;
-    i++;
+    i++;j++;
   }
 
   return 0;
@@ -148,7 +141,7 @@ int trChaveChar(Palavra *P, int *v, int v_l, int modo){
 
   int i=0,j=1;
   Letra *Li=*P;
-  while(Li!=NULL){
+  while(Li->prox!=NULL){
     if(i>=v_l) i=0;
     if(modo==1){
       addLetra(Lo,Li->c+v[i]);
