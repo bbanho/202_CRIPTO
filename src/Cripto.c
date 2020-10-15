@@ -91,7 +91,7 @@ int printPalavra(Palavra *P){
   int i=0;
 
   Letra *Ln=*P;
-  while(Ln!=NULL&&Ln->c>0){
+  while(Ln!=NULL&&i<tamPalavra(P)-1){
     if(i>1024) return 1;
 //    p[i]=Ln->c;
     printf("%c",Ln->c);
@@ -146,20 +146,20 @@ int trChaveChar(Palavra *P, int *v, int v_l, int modo){
   Palavra *Lo = (Palavra *) malloc(sizeof(Letra));
   if(Lo==NULL) return 1;
 
-  int i=0,j=0;
+  int i=0,j=1;
   Letra *Li=*P;
   while(Li!=NULL){
     if(i>=v_l) i=0;
     if(modo==1){
       addLetra(Lo,Li->c+v[i]);
-      if(j%3==0&&j!=0){
-        addLetraPos(Lo,'*',j);
+      if(j%3==0&&Li->prox->prox!=NULL){
+        addLetra(Lo,'*');
       }
     } else {
+      addLetra(Lo,Li->c-v[i]);
       if(j%3==0&&Li->prox->prox!=NULL){
         Li=Li->prox;
       }
-      addLetra(Lo,Li->c-v[i]);
     }
     Li=Li->prox;
     i++;j++;
