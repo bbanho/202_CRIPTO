@@ -1,6 +1,7 @@
 #include "Cripto.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 Palavra *criaPalavra(){
   
@@ -56,13 +57,20 @@ int printPalavra(Palavra *P){
 
   if(P==NULL) return 0;
 
+  char p[1024];
+  int i=0;
+
   Letra *Ln=*P;
-  while(Ln!=NULL){
+  while(Ln!=NULL&&Ln->c>0){
+    if(i>1024) return 0;
+    p[i]=Ln->c;
     printf("%c",Ln->c);
-    Ln=Ln->prox;
-  } 
+    Ln=Ln->prox;i++;
+
+  }
   return 1;
 }
+
 
 int trCesar(Palavra *P, int n){
 
