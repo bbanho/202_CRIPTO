@@ -66,12 +66,7 @@ int printPalavra(Palavra *P){
     p[i]=Ln->c;
     printf("%c",Ln->c);
     Ln=Ln->prox;i++;
-
   }
-  puts("");
-  for(int j=0;j<i;j++)
-    printf("%x",p[j]);
-  puts("");
   return 1;
 }
 
