@@ -8,7 +8,7 @@ all:
 	gcc $(SRC)/main.c $(OBJ)/Cripto.o -o $(BIN)/cripto
 
 run:
-	$(BIN)/cripto
+	@ $(BIN)/cripto
 
 clean:
 	rm $(OBJ)/*.o
