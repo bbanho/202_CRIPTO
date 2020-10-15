@@ -89,7 +89,7 @@ int main(){
     case 4:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      return traduz(chaved,chavec);
+      if(traduz(chaved,chavec)==1) return 1;
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       buf[strlen(buf)]='\0';
@@ -103,7 +103,7 @@ int main(){
     case -4:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      return traduz(chaved,chavec);
+      if(traduz(chaved,chavec)==1) return 1;
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       buf[strlen(buf)]='\0';
@@ -117,7 +117,7 @@ int main(){
     case 5:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      return traduz(chaved,chavec);
+      if(traduz(chaved,chavec)==1) return 1;
       fflush(stdin);
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
@@ -131,7 +131,7 @@ int main(){
     case -5:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      return traduz(chaved,chavec);
+      if(traduz(chaved,chavec)==1) return 1;
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       for(int i=0;i<=(int)strlen(buf);i++){
