@@ -69,7 +69,10 @@ int printPalavra(Palavra *P){
 
   }
   p[tamPalavra(P)]='\0';
-  printf("%s",p);
+//  printf("%s\n",p);
+  for(int i=0;i<tamPalavra(P);i++){
+    printf("%c",p[i]);
+  }
   return 0;
 }
 
@@ -98,7 +101,7 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
   Li=*P;
 
   int i=0;
-  while(Li!=NULL){
+  while(Li->prox!=NULL){
     if(i>=v_l) i=0;
     if(modo==1){
       Li->c+=v[i];
@@ -128,8 +131,9 @@ int trChaveChar(Palavra *P, int *v, int v_l, int modo){
     if(i>=v_l) i=0;
     if(modo==1){
       addLetra(Lo,Li->c+v[i]);
-      if(j%3==0&&Li->prox->prox!=NULL)
+      if(j%3==0&&Li->prox->prox!=NULL){
         addLetra(Lo,'*');
+      }
     } else {
       addLetra(Lo,Li->c-v[i]);
       if(j%3==0&&Li->prox->prox!=NULL){
