@@ -25,7 +25,7 @@ int main(){
      scanf("%*[^\n]"); scanf("%*c");
      scanf("%[^\n]",buf);
       for(int i=0;i<(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trCesar(P,1);
       printPalavra(P);
@@ -35,7 +35,7 @@ int main(){
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       for(int i=0;i<(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trCesar(P,-1);
       printPalavra(P);
@@ -46,7 +46,7 @@ int main(){
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       for(int i=0;i<(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trCesar(P,3);
       printPalavra(P);
@@ -56,7 +56,7 @@ int main(){
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       for(int i=0;i<(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trCesar(P,-3);
       printPalavra(P);
@@ -67,7 +67,7 @@ int main(){
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       for(int i=0;i<(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trChave(P,chave3,3,1);
       printPalavra(P);
@@ -77,7 +77,7 @@ int main(){
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       for(int i=0;i<(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trChave(P,chave3,3,0);
       printPalavra(P);
@@ -86,12 +86,12 @@ int main(){
     case 4:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      if(traduz(chaved,chavec)==0) return 1;
+      if(traduz(chaved,chavec)==0) return 0;
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       buf[strlen(buf)]='\0';
       for(int i=0;i<=(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trChave(P,chaved,5,1);
       printPalavra(P);       
@@ -100,12 +100,12 @@ int main(){
     case -4:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      if(traduz(chaved,chavec)==0) return 1;
+      if(traduz(chaved,chavec)==0) return 0;
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       buf[strlen(buf)]='\0';
       for(int i=0;i<=(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trChave(P,chaved,5,0);
       printPalavra(P);       
@@ -114,12 +114,12 @@ int main(){
     case 5:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      if(traduz(chaved,chavec)==0) return 1;
+      if(traduz(chaved,chavec)==0) return 0;
       fflush(stdin);
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       for(int i=0;i<=(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trChaveChar(P,chaved,5,1);
       printPalavra(P);       
@@ -128,11 +128,11 @@ int main(){
     case -5:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      if(traduz(chaved,chavec)==0) return 1;
+      if(traduz(chaved,chavec)==0) return 0;
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       for(int i=0;i<=(int)strlen(buf);i++){
-        if(addLetra(P,buf[i])==0) return 1;
+        if(addLetra(P,buf[i])==0) return 0;
       }
       trChaveChar(P,chaved,5,0);
       printPalavra(P);       
