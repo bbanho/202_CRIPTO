@@ -68,6 +68,7 @@ int printPalavra(Palavra *P){
     Ln=Ln->prox;i++;
 
   }
+  p[tamPalavra(P)]='\0';
   printf("%s",p);
   return 0;
 }
@@ -93,8 +94,7 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
 
   if(P==NULL || v==NULL) return 1;
 
-  Letra *Li = (Letra *) malloc(sizeof(Letra));
-  if(Li==NULL) return 1;
+  Letra *Li;
   Li=*P;
 
   int i=0;
@@ -152,4 +152,18 @@ int traduz(int *outp, char *inp){
   }
 
   return 0;
+}
+
+int tamPalavra(Palavra *P){
+
+  if(P==NULL||*P==NULL) return 0;
+
+  Letra *Li=*P;
+  int c=1;
+  while(Li->prox!=NULL){
+    c++;
+    Li=Li->prox;
+  }
+
+  return c;
 }

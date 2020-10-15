@@ -5,11 +5,11 @@ SRC = ./src
 
 all:
 	gcc -c $(SRC)/Cripto.c -o $(OBJ)/Cripto.o
-	gcc $(SRC)/main.c $(OBJ)/Cripto.o -o $(BIN)/cripto
+	gcc $(SRC)/main.c $(OBJ)/Cripto.o -o $(BIN)
 
 run:
-	@ $(BIN)/cripto
+	@ $(BIN)
 
 clean:
 	rm $(OBJ)/*.o
-	rm $(BIN)/cripto
+	rm $(BIN)

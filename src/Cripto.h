@@ -21,3 +21,4 @@ int trChave(Palavra *P, int *v, int v_l, int modo);
 int trChaveChar(Palavra *P, int *v, int v_l, int modo);
 
 int traduz(int *u, char *inp);
+int tamPalavra(Palavra *P);
