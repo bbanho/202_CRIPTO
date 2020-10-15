@@ -10,6 +10,7 @@ typedef Letra *Palavra;
 
 Palavra *criaPalavra();
 int addLetra(Palavra *P, char c);
+int addLetraPos(Palavra *P, char c, int pos);
 int rmLetra(Palavra *P, int pos);
 char pickLetra(Palavra *P, int pos);
 int printPalavra(Palavra *P);
