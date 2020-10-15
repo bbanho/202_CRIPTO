@@ -57,22 +57,21 @@ int printPalavra(Palavra *P){
 
   if(P==NULL) return 1;
 
-  char p[1024];
+//  char p[1024];
   int i=0;
 
   Letra *Ln=*P;
   while(Ln!=NULL&&Ln->c>0){
     if(i>1024) return 1;
-    p[i]=Ln->c;
-//    printf("%c",Ln->c);
+//    p[i]=Ln->c;
+    printf("%x",Ln->c);
     Ln=Ln->prox;i++;
-
   }
-  p[tamPalavra(P)]='\0';
+//  p[tamPalavra(P)]='\0';
 //  printf("%s\n",p);
-  for(int i=0;i<tamPalavra(P);i++){
-    printf("%c",p[i]);
-  }
+//  for(int i=0;i<tamPalavra(P);i++){
+//    printf("%x",p[i]);
+//  }
   return 0;
 }
 
@@ -81,10 +80,7 @@ int trCesar(Palavra *P, int n){
 
   if (P==NULL) return 1;
 
-  Letra *Li = (Letra *) malloc(sizeof(Letra));
-  if(Li==NULL) return 1;
-
-  Li=*P;
+  Letra *Li=*P;
   while(Li!=NULL){
     Li->c+=n;
     Li=Li->prox;
@@ -111,6 +107,7 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
     Li=Li->prox;
     i++;
   }
+  Li=NULL;
 
   return 0;
 }
@@ -127,13 +124,12 @@ int trChaveChar(Palavra *P, int *v, int v_l, int modo){
   
   int i=0,j=1;
   Li=*P;
-  while(Li->prox!=NULL){
+  while(Li!=NULL){
     if(i>=v_l) i=0;
     if(modo==1){
       addLetra(Lo,Li->c+v[i]);
-      if(j%3==0&&Li->prox->prox!=NULL){
+      if(j%3==0&&Li->prox->prox!=NULL)
         addLetra(Lo,'*');
-      }
     } else {
       addLetra(Lo,Li->c-v[i]);
       if(j%3==0&&Li->prox->prox!=NULL){
