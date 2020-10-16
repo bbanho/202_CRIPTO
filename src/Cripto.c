@@ -34,36 +34,6 @@ int addLetra(Palavra *P, char c){
   return 0; 
 }
 
-int addLetraPos(Palavra *P, char c, int pos){
-
-  if(P==NULL) return 1;
-
-  Letra *Lo = (Letra *) malloc(sizeof(Letra));
-  if(Lo==NULL) return 1;
-  Lo->c=c;
-
-
-  if((*P)==NULL){
-      (*P)=Lo;
-    Lo->prox=NULL;
-  } else {
-    Letra *Li=*P;
-    Letra *La;
-    int i=0;
-    while(Li->prox!=NULL&&i<pos){
-      La=Li;
-      Li=Li->prox;i++;
-    }
-    if(Li==*P){ // inicio
-      Lo->prox=*P;
-      *P=Lo;
-    } else {
-      Lo->prox=Li;
-      La->prox=Lo;
-    }
-  }
-}
-
 int rmLetra(Palavra *P, int pos){
 
   if(P==NULL) return 1;
@@ -87,15 +57,23 @@ int printPalavra(Palavra *P){
 
   if(P==NULL) return 1;
 
+  char p[1024];
   int i=0;
 
   Letra *Ln=*P;
-  while(Ln!=NULL&&i<tamPalavra(P)){
+  while(Ln!=NULL&&Ln->c>0){
     if(i>1024) return 1;
-    printf("%c",Ln->c);
+    p[i]=Ln->c;
+//    printf("%c",Ln->c);
     Ln=Ln->prox;i++;
+
   }
- return 0;
+  p[tamPalavra(P)]='\0';
+//  printf("%s\n",p);
+  for(int i=0;i<tamPalavra(P);i++){
+    printf("%c",p[i]);
+  }
+  return 0;
 }
 
 
@@ -103,8 +81,11 @@ int trCesar(Palavra *P, int n){
 
   if (P==NULL) return 1;
 
-  Letra *Li=*P;
-  while(Li!=NULL){
+  Letra *Li = (Letra *) malloc(sizeof(Letra));
+  if(Li==NULL) return 1;
+
+  Li=*P;
+  while(Li->prox!=NULL){
     Li->c+=n;
     Li=Li->prox;
   }
@@ -119,8 +100,8 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
   Letra *Li;
   Li=*P;
 
-  int i=0,j=0;
-  while(Li->prox!=NULL&&j<tamPalavra(P)){
+  int i=0;
+  while(Li->prox!=NULL){
     if(i>=v_l) i=0;
     if(modo==1){
       Li->c+=v[i];
@@ -128,7 +109,7 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
       Li->c-=v[i];
     }
     Li=Li->prox;
-    i++;j++;
+    i++;
   }
 
   return 0;
@@ -136,18 +117,22 @@ int trChave(Palavra *P, int *v, int v_l, int modo){
 
 int trChaveChar(Palavra *P, int *v, int v_l, int modo){
 
-  Palavra *Lo = (Palavra *) malloc(sizeof(Letra));
-  if(Lo==NULL) return 1;
 
+  Letra *Li = (Letra *) malloc(sizeof(Letra));
+  if(Li==NULL) return 1;
+
+  Palavra *Lo;
+  Lo=criaPalavra();
+  if(Lo==NULL) return 1;
+  
   int i=0,j=1;
-  Letra *Li=*P;
+  Li=*P;
   while(Li->prox!=NULL){
     if(i>=v_l) i=0;
     if(modo==1){
       addLetra(Lo,Li->c+v[i]);
-      if(j%3==0&&Li->prox->prox!=NULL){
+      if(j%3==0&&Li->prox->prox!=NULL)
         addLetra(Lo,'*');
-      }
     } else {
       addLetra(Lo,Li->c-v[i]);
       if(j%3==0&&Li->prox->prox!=NULL){

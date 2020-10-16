@@ -27,7 +27,6 @@ int main(){
     case 1:
      scanf("%*[^\n]"); scanf("%*c");
      scanf("%[^\n]",buf);
-      fflush(stdin);
       for(int i=0;i<(int)strlen(buf);i++){
         if(addLetra(P,buf[i])==1) return 1;
       }
@@ -38,7 +37,6 @@ int main(){
     case -1:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
-      fflush(stdin);
       for(int i=0;i<(int)strlen(buf);i++){
         if(addLetra(P,buf[i])==1) return 1;
       }
@@ -50,7 +48,6 @@ int main(){
     case 2:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
-      fflush(stdin);
       for(int i=0;i<(int)strlen(buf);i++){
         if(addLetra(P,buf[i])==1) return 1;
       }
@@ -61,7 +58,6 @@ int main(){
     case -2:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
-      fflush(stdin);
       for(int i=0;i<(int)strlen(buf);i++){
         if(addLetra(P,buf[i])==1) return 1;
       }
@@ -73,7 +69,6 @@ int main(){
     case 3:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
-      fflush(stdin);
       for(int i=0;i<(int)strlen(buf);i++){
         if(addLetra(P,buf[i])==1) return 1;
       }
@@ -84,7 +79,6 @@ int main(){
     case -3:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
-      fflush(stdin);
       for(int i=0;i<(int)strlen(buf);i++){
         if(addLetra(P,buf[i])==1) return 1;
       }
@@ -96,7 +90,6 @@ int main(){
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
       if(traduz(chaved,chavec)==1) return 1;
-      fflush(stdin);
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       buf[strlen(buf)]='\0';
@@ -111,7 +104,6 @@ int main(){
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
       if(traduz(chaved,chavec)==1) return 1;
-      fflush(stdin);
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
       buf[strlen(buf)]='\0';
@@ -139,7 +131,6 @@ int main(){
     case -5:
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",chavec);
-      fflush(stdin);
       if(traduz(chaved,chavec)==1) return 1;
       scanf("%*[^\n]"); scanf("%*c");
       scanf("%[^\n]",buf);
