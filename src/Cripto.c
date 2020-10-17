@@ -61,7 +61,7 @@ int printPalavra(Palavra *P){
   int i=0;
 
   Letra *Ln=*P;
-  while(Ln!=NULL&&Ln->c>0){
+  while(Ln!=NULL){
     if(i>1024) return 1;
     p[i]=Ln->c;
 //    printf("%c",Ln->c);
@@ -69,9 +69,9 @@ int printPalavra(Palavra *P){
 
   }
   p[tamPalavra(P)]='\0';
-//  printf("%s\n",p);
+  printf("%s\n",p);
   for(int i=0;i<tamPalavra(P);i++){
-    printf("%c",p[i]);
+    printf("%x",p[i]);
   }
   return 0;
 }
