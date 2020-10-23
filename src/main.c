@@ -27,7 +27,7 @@ int main(){
     case 1:
      scanf("%*[^\n]"); scanf("%*c");
      scanf("%[^\n]",buf);
-      for(int i=0;i<(int)strlen(buf);i++){
+        for(int i=0;i<=(int)strlen(buf);i++){
         if(addLetra(P,buf[i])==1) return 1;
       }
       trCesar(P,1);

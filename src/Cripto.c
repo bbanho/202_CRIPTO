@@ -61,18 +61,18 @@ int printPalavra(Palavra *P){
   int i=0;
 
   Letra *Ln=*P;
-  while(Ln!=NULL){
+  while(Ln!=NULL&&Ln->c>0){
     if(i>1024) return 1;
     p[i]=Ln->c;
 //    printf("%c",Ln->c);
     Ln=Ln->prox;i++;
 
   }
-  p[tamPalavra(P)]='\0';
-  printf("%s\n",p);
+//  printf("%s\n",p);
   for(int i=0;i<tamPalavra(P);i++){
-    printf("%x",p[i]);
+    printf("%c",p[i]);
   }
+  puts("");
   return 0;
 }
 
@@ -85,7 +85,7 @@ int trCesar(Palavra *P, int n){
   if(Li==NULL) return 1;
 
   Li=*P;
-  while(Li->prox!=NULL){
+  while(Li!=NULL){
     Li->c+=n;
     Li=Li->prox;
   }
